@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIEW  & DELETE</title>
+  <style>
+    table{
+      padding: 10px;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    td,th {
+      padding: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>EMAIL</th>
+      <th>ROLL NUMBER</th>
+      <th>EMAIL</th>
+      <th>DELETE</th>
+      <th>UPDATE</th>
+    </tr>
+    {% for student in students %}
+    <tr>
+      <td>{{ student['id'] }}</td>
+      <td>{{ student['name'] }}</td>
+      <td>{{ student['roll_no'] }}</td>
+      <td>{{ student['email'] }}</td>
+      <td>
+        <form action="/" method="post">
+          <input type="hidden" name="id" value="{{ student['id'] }}">
+          <input type="submit" value="DELETE">
+        </form>
+      </td>
+      <td>
+        <a href="/update/{{ student['id'] }}">UPDATE</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
